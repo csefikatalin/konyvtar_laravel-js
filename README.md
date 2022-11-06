@@ -20,14 +20,14 @@
 
 ### 2.LÉPÉS: ABBAN A SCRIPTBEN, AHOL PÉLDÁNYOSÍTOD AZ AJAX HÍVÁSOK OSZTÁLYÁT, HOZZ LÉTRE EGY TOKEN CONSTANST, ÉS EZZEL PÉLDÁNYOSÍTSD AZ AJAX HÍVÁSOK OSZTÁLYÁT.
 
-** const token = $('meta[name="csrf-token"]').attr("content");**
+**const token = $('meta[name="csrf-token"]').attr("content");**
 const konyvModel = new KonyvModel(**token**);
 
 ### 3.LÉPÉS: A MYAJAX OSZTÁLY KONSTRUKTORA:
 
 class KonyvModel {
 constructor(token) {
-    **this.token = token; **  
+    **this.token = token;**  
  }
 
 ### 4.LÉPÉS: A PUT, POST, DELETE METÓDUSOK ESETÉBEN AZ AJAX HÍVÁS FEJLÉCÉBE EL KELL HELYEZNI A TOKENT A HEADERS-BEN:
@@ -38,7 +38,7 @@ constructor(token) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                **"X-CSRF-TOKEN": this.token **
+                "X-CSRF-TOKEN": this.token
             },
             body: JSON.stringify(adat),
         })

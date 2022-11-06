@@ -19,20 +19,20 @@
 ``` <meta name="csrf-token" content=<?php $token = csrf_token(); echo $token; ?>```
 
 ### 2.LÉPÉS: ABBAN A SCRIPTBEN, AHOL PÉLDÁNYOSÍTOD AZ AJAX HÍVÁSOK OSZTÁLYÁT, HOZZ LÉTRE EGY TOKEN CONSTANST, ÉS EZZEL PÉLDÁNYOSÍTSD AZ AJAX HÍVÁSOK OSZTÁLYÁT.
-```
+
 ** const token = $('meta[name="csrf-token"]').attr("content");**
-const konyvModel = new KonyvModel(**token**);```
+const konyvModel = new KonyvModel(**token**);
 
 ### 3.LÉPÉS: A MYAJAX OSZTÁLY KONSTRUKTORA:
 
-```class KonyvModel {
+class KonyvModel {
 constructor(token) {
     **this.token = token; **  
- }```
+ }
 
 ### 4.LÉPÉS: A PUT, POST, DELETE METÓDUSOK ESETÉBEN AZ AJAX HÍVÁS FEJLÉCÉBE EL KELL HELYEZNI A TOKENT A HEADERS-BEN:
 
-    ``` adatUj(vegpont, adat) {
+    adatUj(vegpont, adat) {
 
         fetch(vegpont, {
             method: "POST",
@@ -49,6 +49,6 @@ constructor(token) {
             .catch((error) => {
                 console.error("Error:", error);
             });
-        }```
+        }
 
 ÉS kész. Ezzel elértük azt, hogy csak a session által generált token birtokában tudjuk módosítani az adatokat.

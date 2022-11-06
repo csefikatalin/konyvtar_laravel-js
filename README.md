@@ -23,12 +23,10 @@
 **const token = $('meta[name="csrf-token"]').attr("content");**
 const konyvModel = new KonyvModel(**token**);
 
-### 3.LÉPÉS: A MYAJAX OSZTÁLY KONSTRUKTORA:
+### 3.LÉPÉS: A KonyvModel OSZTÁLY KONSTRUKTORA:
 
 class KonyvModel {
-constructor(token) {
-    **this.token = token;**  
- }
+constructor(token) { **this.token = token;**  }
 
 ### 4.LÉPÉS: A PUT, POST, DELETE METÓDUSOK ESETÉBEN AZ AJAX HÍVÁS FEJLÉCÉBE EL KELL HELYEZNI A TOKENT A HEADERS-BEN:
 

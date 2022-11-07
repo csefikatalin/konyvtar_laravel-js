@@ -29,17 +29,18 @@ class KonyvController extends Controller
     public function update(Request $request, $konyvId)
     {
         $konyv = Konyv::find($konyvId);
-        $konyv = new Konyv();
         $konyv->cim = $request->cim;
         $konyv->szerzo = $request->szerzo;
         $konyv->ar = $request->ar;
         $konyv->save();
+        return Konyv::find($konyv->id);
     }
 
 
     public function destroy($konyvId)
     {
-        $theme = Konyv::find($konyvId);
-        $theme->delete();
+        $konyv = Konyv::find($konyvId)->delete();
+        $konyv = Konyv::all();
+        return $konyv;
     }
 }

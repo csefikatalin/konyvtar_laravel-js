@@ -15,7 +15,7 @@ use App\Http\Controllers\KonyvController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/konyvek', [KonyvController::class, 'index']);
 Route::post('/konyvek', [KonyvController::class, 'store']);
-Route::put('/konyvek', [KonyvController::class, 'update']);
-Route::delete('/konyvek', [KonyvController::class, 'destroy']);
+Route::put('/konyvek/{id}', [KonyvController::class, 'update']);
+Route::delete('/konyvek/{id}', [KonyvController::class, 'destroy']);
 
 require __DIR__ . '/auth.php';
